@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bq8d2g310537k"]
+
+[ext_resource type="PackedScene" uid="uid://766jsikflxl" path="res://player/player.tscn" id="1_rupst"]
+[ext_resource type="Texture2D" uid="uid://d1on2blmknmk" path="res://maps_and_icons/BackgroundImage.png" id="1_wt17y"]
+[ext_resource type="PackedScene" uid="uid://d022l25jcpys6" path="res://ui_components/health_bar/player_hud.tscn" id="3_m8u5f"]
+[ext_resource type="PackedScene" uid="uid://cw1phjjcb62lx" path="res://maps_and_icons/steak_pickup_scene.tscn" id="4_is3ju"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rupst"]
+
+[node name="Playground" type="Node2D" unique_id=857691302]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=938466470]
+position = Vector2(360, 232.99998)
+scale = Vector2(0.935, 0.935)
+texture = ExtResource("1_wt17y")
+
+[node name="player" parent="." unique_id=847592616 instance=ExtResource("1_rupst")]
+texture_filter = 1
+position = Vector2(58, 178)
+
+[node name="playerHud" parent="." unique_id=1293400513 instance=ExtResource("3_m8u5f")]
+
+[node name="SteakPickup" parent="." unique_id=1525666953 instance=ExtResource("4_is3ju")]
+position = Vector2(677, 309)
+
+[node name="floorBody" type="StaticBody2D" parent="." unique_id=2080863513]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floorBody" unique_id=2054623472]
+position = Vector2(0, 349)
+shape = SubResource("WorldBoundaryShape2D_rupst")

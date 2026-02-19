@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://d022l25jcpys6"]
+
+[ext_resource type="Script" uid="uid://c2l56t600edsr" path="res://ui_components/health_bar/player_hud.gd" id="1_6vp4k"]
+[ext_resource type="Texture2D" uid="uid://cp57wi1gaijh7" path="res://ui_components/health_bar/outer_bar.png" id="1_cs3pk"]
+[ext_resource type="Texture2D" uid="uid://ogb601gtu6p0" path="res://ui_components/health_bar/heart_lifeline.png" id="2_6vp4k"]
+
+[node name="playerHud" type="CanvasLayer" unique_id=1293400513]
+script = ExtResource("1_6vp4k")
+
+[node name="Control" type="Control" parent="." unique_id=560522631]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HpMarginContainer" type="MarginContainer" parent="Control" unique_id=35283784]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 12.0
+offset_right = 127.89499
+offset_bottom = 69.509995
+metadata/_edit_use_anchors_ = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/HpMarginContainer" unique_id=1520414633]
+layout_mode = 2
+texture = ExtResource("1_cs3pk")
+
+[node name="HealthPoints" type="Label" parent="Control/HpMarginContainer/NinePatchRect" unique_id=292622229]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 11.0
+offset_right = 79.0
+offset_bottom = 35.77
+scale = Vector2(1.187, 0.752)
+text = "100 / 100"
+horizontal_alignment = 1
+
+[node name="HeartLifeline" type="Sprite2D" parent="Control/HpMarginContainer/NinePatchRect" unique_id=930975804]
+position = Vector2(105.99999, 20)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("2_6vp4k")
