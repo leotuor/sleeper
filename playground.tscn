@@ -28,3 +28,9 @@ position = Vector2(677, 309)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floorBody" unique_id=2054623472]
 position = Vector2(0, 349)
 shape = SubResource("WorldBoundaryShape2D_rupst")
+
+[node name="SteakPickup2" parent="." unique_id=1911869503 instance=ExtResource("4_is3ju")]
+position = Vector2(547, 310)
+
+[node name="SteakPickup3" parent="." unique_id=80639643 instance=ExtResource("4_is3ju")]
+position = Vector2(438, 308)
