@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://766jsikflxl"]
 
-[ext_resource type="Script" uid="uid://b6cg22gm1q3ts" path="res://scripts/playerMovementBasic.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://b6cg22gm1q3ts" path="res://player/playerMovementBasic.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://bhrtqj3hkvr1" path="res://player/sprites/Attack.png" id="2_2hs0m"]
 [ext_resource type="Texture2D" uid="uid://ch3xyd3fqf4ra" path="res://player/sprites/Idle.png" id="2_onrkg"]
 [ext_resource type="Texture2D" uid="uid://b5vi78b3s80lj" path="res://player/sprites/Dead.png" id="2_sweqy"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cw1phjjcb62lx"]
 
-[ext_resource type="Script" uid="uid://blld43rq5hoku" path="res://scripts/steak_pickup.gd" id="1_jekjb"]
-[ext_resource type="Texture2D" uid="uid://bjdkntd4807us" path="res://maps_and_icons/steak_pickup.png" id="1_xalvf"]
+[ext_resource type="Script" uid="uid://blld43rq5hoku" path="res://steak_pickup/steak_pickup.gd" id="1_jekjb"]
+[ext_resource type="Texture2D" uid="uid://bjdkntd4807us" path="res://steak_pickup/steak_pickup.png" id="1_xalvf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xalvf"]
 size = Vector2(52, 51)

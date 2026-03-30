@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bjdkntd4807us"
-path="res://.godot/imported/steak_pickup.png-acfcdc16da3ba9aea1e2832deb5f0d6e.ctex"
+path="res://.godot/imported/steak_pickup.png-4a81d415cad0f8b4685c8596b990844e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://maps_and_icons/steak_pickup.png"
-dest_files=["res://.godot/imported/steak_pickup.png-acfcdc16da3ba9aea1e2832deb5f0d6e.ctex"]
+source_file="res://steak_pickup/steak_pickup.png"
+dest_files=["res://.godot/imported/steak_pickup.png-4a81d415cad0f8b4685c8596b990844e.ctex"]
 
 [params]
 

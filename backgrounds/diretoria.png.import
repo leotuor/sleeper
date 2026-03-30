@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ktb3sf8tagp7"
-path="res://.godot/imported/diretoria.png-afd62220088dfe0aefe424ab2dbdb56d.ctex"
+path="res://.godot/imported/diretoria.png-9d3f9784d0945b4c9f45445fa6e2dd43.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/diretoria.png"
-dest_files=["res://.godot/imported/diretoria.png-afd62220088dfe0aefe424ab2dbdb56d.ctex"]
+source_file="res://backgrounds/diretoria.png"
+dest_files=["res://.godot/imported/diretoria.png-9d3f9784d0945b4c9f45445fa6e2dd43.ctex"]
 
 [params]
 

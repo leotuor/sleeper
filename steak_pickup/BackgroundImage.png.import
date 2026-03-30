@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bukc13j01g38g"
-path="res://.godot/imported/corredor2.png-d555d1373bb9a61b2c19c6c44a2ebbfe.ctex"
+uid="uid://d1on2blmknmk"
+path="res://.godot/imported/BackgroundImage.png-59b87c759a86f3618eb57db53731db48.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/corredor2.png"
-dest_files=["res://.godot/imported/corredor2.png-d555d1373bb9a61b2c19c6c44a2ebbfe.ctex"]
+source_file="res://steak_pickup/BackgroundImage.png"
+dest_files=["res://.godot/imported/BackgroundImage.png-59b87c759a86f3618eb57db53731db48.ctex"]
 
 [params]
 
