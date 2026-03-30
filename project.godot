@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Sleeper"
-run/main_scene="res://playground.tscn"
+run/main_scene="res://stage_scenes/playground(tests)/playground.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -21,8 +21,8 @@ GameManager="*uid://dc8mq7c0g7tlv"
 
 [display]
 
-window/size/viewport_width=720
-window/size/viewport_height=480
+window/size/viewport_width=640
+window/size/viewport_height=360
 window/size/window_width_override=1680
 window/size/window_height_override=720
 window/stretch/mode="viewport"
