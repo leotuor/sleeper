@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://0qw4nvlkel1c"]
+
+[ext_resource type="Texture2D" uid="uid://bv7b04x2atsf8" path="res://assets/backgrounds/cooredor1.png" id="1_j1gbx"]
+[ext_resource type="PackedScene" uid="uid://bltf3lrsppn8" path="res://enemies/Zombie_1/characterBody.tscn" id="2_f86tg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1gbx"]
+size = Vector2(1859, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f86tg"]
+size = Vector2(15, 485)
+
+[node name="LockerHallway" type="Node2D" unique_id=206937711]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1646760785]
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1738811672]
+position = Vector2(926.99994, 239.99998)
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("1_j1gbx")
+
+[node name="delimitations" type="StaticBody2D" parent="." unique_id=2040343391]
+
+[node name="Ceil" type="CollisionShape2D" parent="delimitations" unique_id=584203731]
+position = Vector2(919.5, 0)
+shape = SubResource("RectangleShape2D_j1gbx")
+
+[node name="floor" type="CollisionShape2D" parent="delimitations" unique_id=1576575987]
+position = Vector2(927, 470)
+shape = SubResource("RectangleShape2D_j1gbx")
+
+[node name="left" type="CollisionShape2D" parent="delimitations" unique_id=74975776]
+position = Vector2(-2.5, 232.5)
+shape = SubResource("RectangleShape2D_f86tg")
+
+[node name="right" type="CollisionShape2D" parent="delimitations" unique_id=619030672]
+position = Vector2(1849, 234)
+shape = SubResource("RectangleShape2D_f86tg")
+
+[node name="ZOMBIE" parent="." unique_id=1282098937 instance=ExtResource("2_f86tg")]
+position = Vector2(521, 285)
