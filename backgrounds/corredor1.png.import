@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1on2blmknmk"
-path="res://.godot/imported/BackgroundImage.png-5b5821fb56803a77a72868d033210916.ctex"
+uid="uid://bv7b04x2atsf8"
+path="res://.godot/imported/corredor1.png-e931166a40b8916b907829ea8a4b7bf1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://maps_and_icons/BackgroundImage.png"
-dest_files=["res://.godot/imported/BackgroundImage.png-5b5821fb56803a77a72868d033210916.ctex"]
+source_file="res://backgrounds/corredor1.png"
+dest_files=["res://.godot/imported/corredor1.png-e931166a40b8916b907829ea8a4b7bf1.ctex"]
 
 [params]
 

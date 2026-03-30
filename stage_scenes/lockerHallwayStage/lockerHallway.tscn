@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://0qw4nvlkel1c"]
 
-[ext_resource type="Texture2D" uid="uid://bv7b04x2atsf8" path="res://assets/backgrounds/cooredor1.png" id="1_j1gbx"]
+[ext_resource type="Texture2D" uid="uid://bv7b04x2atsf8" path="res://backgrounds/corredor1.png" id="1_j1gbx"]
 [ext_resource type="PackedScene" uid="uid://bltf3lrsppn8" path="res://enemies/Zombie_1/characterBody.tscn" id="2_f86tg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1gbx"]

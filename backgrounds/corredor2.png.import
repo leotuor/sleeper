@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv7b04x2atsf8"
-path="res://.godot/imported/cooredor1.png-5f2af2151fc03aa1c8e104e42d49f86e.ctex"
+uid="uid://bukc13j01g38g"
+path="res://.godot/imported/corredor2.png-7c9ef7d1b3b09f0f33265cef87ec2407.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/cooredor1.png"
-dest_files=["res://.godot/imported/cooredor1.png-5f2af2151fc03aa1c8e104e42d49f86e.ctex"]
+source_file="res://backgrounds/corredor2.png"
+dest_files=["res://.godot/imported/corredor2.png-7c9ef7d1b3b09f0f33265cef87ec2407.ctex"]
 
 [params]
 
