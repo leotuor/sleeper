@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d1on2blmknmk" path="res://maps_and_icons/BackgroundImage.png" id="1_wt17y"]
 [ext_resource type="PackedScene" uid="uid://d022l25jcpys6" path="res://ui_components/health_bar/player_hud.tscn" id="3_m8u5f"]
 [ext_resource type="PackedScene" uid="uid://cw1phjjcb62lx" path="res://maps_and_icons/steak_pickup_scene.tscn" id="4_is3ju"]
+[ext_resource type="PackedScene" uid="uid://bltf3lrsppn8" path="res://enemies/Zombie_1/characterBody.tscn" id="5_o00ia"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rupst"]
 
@@ -29,6 +30,8 @@ position = Vector2(677, 309)
 position = Vector2(0, 349)
 shape = SubResource("WorldBoundaryShape2D_rupst")
 
+[node name="ZOMBIE" parent="." unique_id=1282098937 instance=ExtResource("5_o00ia")]
+position = Vector2(550, 181)
 [node name="SteakPickup2" parent="." unique_id=1911869503 instance=ExtResource("4_is3ju")]
 position = Vector2(547, 310)
 
