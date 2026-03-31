@@ -11,18 +11,18 @@
 [node name="Playground" type="Node2D" unique_id=857691302]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=938466470]
-position = Vector2(360, 232.99998)
-scale = Vector2(0.935, 0.935)
+position = Vector2(320, 179.50002)
+scale = Vector2(0.8333332, 1.0466472)
 texture = ExtResource("1_hislk")
 
 [node name="player" parent="." unique_id=847592616 instance=ExtResource("2_udvem")]
 texture_filter = 1
-position = Vector2(58, 178)
+position = Vector2(36, 167)
 
 [node name="playerHud" parent="." unique_id=1293400513 instance=ExtResource("3_31rrn")]
 
 [node name="SteakPickup" parent="." unique_id=1525666953 instance=ExtResource("4_0rqtv")]
-position = Vector2(677, 309)
+position = Vector2(590, 303)
 
 [node name="floorBody" type="StaticBody2D" parent="." unique_id=2080863513]
 
@@ -31,10 +31,10 @@ position = Vector2(0, 349)
 shape = SubResource("WorldBoundaryShape2D_rupst")
 
 [node name="ZOMBIE" parent="." unique_id=1282098937 instance=ExtResource("5_ntwlw")]
-position = Vector2(550, 181)
+position = Vector2(498, 170)
 
 [node name="SteakPickup2" parent="." unique_id=1911869503 instance=ExtResource("4_0rqtv")]
-position = Vector2(547, 310)
+position = Vector2(504, 303)
 
 [node name="SteakPickup3" parent="." unique_id=80639643 instance=ExtResource("4_0rqtv")]
-position = Vector2(438, 308)
+position = Vector2(438, 299)

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c8ovtxbkf2l7v"]
 
-[ext_resource type="Script" uid="uid://oahyngxfvdoy" path="res://Menu/menu.gd" id="1_raj00"]
-[ext_resource type="Texture2D" uid="uid://d1vbk5mkyffa6" path="res://Menu/Menu.png" id="2_8w4re"]
-[ext_resource type="FontFile" uid="uid://c8xoj7hudy1h4" path="res://Menu/Orange Kid.otf" id="3_ofseh"]
+[ext_resource type="Script" uid="uid://oahyngxfvdoy" path="res://menu/menu.gd" id="1_raj00"]
+[ext_resource type="Texture2D" uid="uid://ddgmlw70yte4n" path="res://menu/Menu.png" id="2_8w4re"]
+[ext_resource type="FontFile" uid="uid://c8xoj7hudy1h4" path="res://menu/Orange Kid.otf" id="3_ofseh"]
 
 [node name="Menu" type="Control" unique_id=1187686995]
 layout_mode = 3
@@ -26,20 +26,20 @@ offset_bottom = 2.1600037
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_8w4re")
-stretch_mode = 1
+expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1746423954]
 clip_contents = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.312
-anchor_top = 0.40300003
-anchor_right = 0.712
-anchor_bottom = 0.78300005
-offset_left = 0.31999207
-offset_top = -0.08001709
-offset_right = 0.32000732
-offset_bottom = 0.11999512
+anchor_left = 0.36600003
+anchor_top = 0.342
+anchor_right = 0.65800005
+anchor_bottom = 0.781
+offset_left = -0.24002075
+offset_top = -0.12000275
+offset_right = -0.120025635
+offset_bottom = -0.16000366
 
 [node name="Play" type="Button" parent="VBoxContainer" unique_id=321582253]
 layout_mode = 2

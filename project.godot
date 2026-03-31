@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Sleeper"
-run/main_scene="res://stage_scenes/playground(tests)/playground.tscn"
+run/main_scene="uid://c8ovtxbkf2l7v"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
