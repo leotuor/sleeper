@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb656t0fp3ahp"
-path="res://.godot/imported/spirit_blast2.png-bab542eac4d31276bee25947fe0eca33.ctex"
+uid="uid://cgjxeyowharan"
+path="res://.godot/imported/loopable_beam1.png-b022192a4e89c17300de7fe9f5e515ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/sprites/spirit_blast2.png"
-dest_files=["res://.godot/imported/spirit_blast2.png-bab542eac4d31276bee25947fe0eca33.ctex"]
+source_file="res://player/sprites/loopable_beam1.png"
+dest_files=["res://.godot/imported/loopable_beam1.png-b022192a4e89c17300de7fe9f5e515ef.ctex"]
 
 [params]
 

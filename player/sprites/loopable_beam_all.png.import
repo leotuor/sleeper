@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddgmlw70yte4n"
-path="res://.godot/imported/Menu.png-9ce4618bae5c587a92bffb4112a83ff3.ctex"
+uid="uid://b6i4v3wcrw4ys"
+path="res://.godot/imported/loopable_beam_all.png-6407152126728209ae657aa5a6df5795.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://menu/Menu.png"
-dest_files=["res://.godot/imported/Menu.png-9ce4618bae5c587a92bffb4112a83ff3.ctex"]
+source_file="res://player/sprites/loopable_beam_all.png"
+dest_files=["res://.godot/imported/loopable_beam_all.png-6407152126728209ae657aa5a6df5795.ctex"]
 
 [params]
 
