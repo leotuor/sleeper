@@ -6,9 +6,20 @@ const JUMP_VELOCITY = -400.0
 @onready var AS = $AnimatedSprite2D
 @onready var steak = $"../SteakPickup"
 
+# THIS IS THE MISSING LINK! We need to grab the BeamOrigin node.
+@onready var beam_origin = $AnimatedSprite2D/BeamOrigin
+
 # We use these to "lock" the player's state
 var is_attacking = false 
 var is_using_special = false 
+
+# The frame of your animation where the beam should actually appear
+var attack_fire_frame : int = 4 # The frame the beam appears
+var attack_end_frame : int = 16  # The frame the beam disappears
+
+func _ready() -> void:
+	# We must connect this signal so the script can watch the animation frames
+	AS.frame_changed.connect(_on_animated_sprite_2d_frame_changed)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -21,18 +32,28 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack") and is_on_floor() and not is_using_special:
 		attack()
 
-	# 2. Trigger the special ability (Requires a new input action mapped in Project Settings)
+	# 2. Trigger the special ability 
 	if Input.is_action_just_pressed("special_action") and is_on_floor() and not is_attacking:
 		special_ability()
 
 	var direction := Input.get_axis("move_left", "move_right")
 	
-	# 3. Only allow turning/moving if NOT attacking and NOT using the special ability
 	if not is_attacking and not is_using_special:
-		if direction > 0:
-			AS.flip_h = false
-		elif direction < 0:
-			AS.flip_h = true
+		# If the player is pressing a movement key...
+		if direction != 0:
+			# Take the current scale, strip any negative signs using abs(), 
+			# and multiply it by the direction (which is naturally 1 or -1)
+			AS.scale.x = abs(AS.scale.x) * sign(direction)
+		
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 		if direction:
 			velocity.x = direction * SPEED
@@ -44,7 +65,6 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	handle_animation()
-	special_ability()
 
 func attack():
 	is_attacking = true
@@ -52,9 +72,8 @@ func attack():
 
 # 4. The new special ability function
 func special_ability():
-	if Input.is_action_just_pressed("special_action"):
-		is_using_special = true
-		AS.play("special_ability")
+	is_using_special = true
+	AS.play("special_ability")
 
 func handle_animation():
 	# 5. Skip standard animations if EITHER lock is active
@@ -69,9 +88,25 @@ func handle_animation():
 	else:
 		AS.play("running")
 
+
+# --- THIS IS THE NEW BEAM FIRING LOGIC ---
+
+# This triggers every single time the animation moves to a new frame
+func _on_animated_sprite_2d_frame_changed() -> void:
+	if AS.animation == "special_ability":
+		
+		# Turn the beam ON when we hit the start frame
+		if AS.frame == attack_fire_frame:
+			beam_origin.fire_beam()
+			
+		# Turn the beam OFF when we hit the end frame
+		elif AS.frame == attack_end_frame:
+			beam_origin.stop_beam()
+
 # 6. Unlock the respective state when its animation finishes
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if AS.animation == "attack":
 		is_attacking = false
 	elif AS.animation == "special_ability":
 		is_using_special = false
+		beam_origin.stop_beam() # This turns the beam off when the animation ends
