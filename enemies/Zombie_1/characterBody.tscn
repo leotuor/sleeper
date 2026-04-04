@@ -265,7 +265,7 @@ script = ExtResource("1_cjerw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=824797606]
 position = Vector2(-164.48001, 4.4800057)
-scale = Vector2(2.585625, 2.585625)
+scale = Vector2(2.581, 2.581)
 sprite_frames = SubResource("SpriteFrames_cs6rd")
 animation = &"hurt"
 frame = 3

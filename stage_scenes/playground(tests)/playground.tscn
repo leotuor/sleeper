@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://766jsikflxl" path="res://player/player.tscn" id="2_udvem"]
 [ext_resource type="PackedScene" uid="uid://d022l25jcpys6" path="res://ui_components/health_bar/player_hud.tscn" id="3_31rrn"]
 [ext_resource type="PackedScene" uid="uid://cw1phjjcb62lx" path="res://steak_pickup/steak_pickup_scene.tscn" id="4_0rqtv"]
-[ext_resource type="PackedScene" uid="uid://bltf3lrsppn8" path="res://enemies/Zombie_1/characterBody.tscn" id="5_ntwlw"]
+[ext_resource type="PackedScene" uid="uid://5revesvgs5y5" path="res://enemies/Zombie_4/characterBody.tscn" id="7_31rrn"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rupst"]
 
@@ -30,11 +30,11 @@ position = Vector2(590, 303)
 position = Vector2(0, 349)
 shape = SubResource("WorldBoundaryShape2D_rupst")
 
-[node name="ZOMBIE" parent="." unique_id=1282098937 instance=ExtResource("5_ntwlw")]
-position = Vector2(738, 165)
-
 [node name="SteakPickup2" parent="." unique_id=1911869503 instance=ExtResource("4_0rqtv")]
 position = Vector2(504, 303)
 
 [node name="SteakPickup3" parent="." unique_id=80639643 instance=ExtResource("4_0rqtv")]
 position = Vector2(438, 299)
+
+[node name="ZOMBIE4MULHER" parent="." unique_id=420011891 instance=ExtResource("7_31rrn")]
+position = Vector2(613, 175)

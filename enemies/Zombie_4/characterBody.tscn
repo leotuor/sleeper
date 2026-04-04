@@ -192,9 +192,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7udj8")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -212,9 +212,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iij6y")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -229,9 +229,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m5l75")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -296,23 +296,87 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ra428")
 }],
-"loop": false,
+"loop": true,
 "name": &"walk",
-"speed": 8.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5oic3"]
-size = Vector2(52, 75)
+size = Vector2(65, 174.5)
 
-[node name="ZOMBIE3OUTRAMULHER" type="CharacterBody2D" unique_id=1282098937]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kr3kw"]
+size = Vector2(74, 181)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xt37u"]
+size = Vector2(169.75, 70.75)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lfvto"]
+radius = 109.07337
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6w71y"]
+radius = 467.00964
+
+[node name="ZOMBIE4MULHER" type="CharacterBody2D" unique_id=1282098937]
 script = ExtResource("1_kr3kw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=824797606]
 position = Vector2(-161, 1)
-scale = Vector2(1.15, 1.15)
+scale = Vector2(2.58, 2.58)
 sprite_frames = SubResource("SpriteFrames_dcgde")
-animation = &"attack"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1939036282]
-position = Vector2(-164, 37)
+position = Vector2(-170.5, 86.75)
 shape = SubResource("RectangleShape2D_5oic3")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=970763172]
+collision_layer = 8
+collision_mask = 4
+
+[node name="HurtboxCollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=823635657]
+position = Vector2(-168, 85)
+shape = SubResource("RectangleShape2D_kr3kw")
+debug_color = Color(2.5027991e-06, 0.64455205, 0.28477475, 0.41960785)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1303006274]
+collision_layer = 16
+collision_mask = 0
+
+[node name="HitboxShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2121202426]
+position = Vector2(-170.125, 46.625)
+shape = SubResource("RectangleShape2D_xt37u")
+disabled = true
+debug_color = Color(0.9762252, 0.11015553, 0.282299, 0.41960785)
+
+[node name="AttackRange" type="Area2D" parent="." unique_id=958612570]
+collision_layer = 0
+collision_mask = 2
+
+[node name="AtkRangeCollisionShape2D" type="CollisionShape2D" parent="AttackRange" unique_id=1358720028]
+position = Vector2(-170, 72)
+shape = SubResource("CircleShape2D_lfvto")
+debug_color = Color(0.49717373, 0.582545, 0, 0.41960785)
+
+[node name="AttackDuration" type="Timer" parent="." unique_id=126077607]
+one_shot = true
+
+[node name="AttackCooldown" type="Timer" parent="." unique_id=1143822798]
+one_shot = true
+
+[node name="ChaseRange" type="Area2D" parent="." unique_id=2084210997]
+collision_layer = 0
+collision_mask = 2
+
+[node name="ChaseRangeCollisionShape2D" type="CollisionShape2D" parent="ChaseRange" unique_id=1042159826]
+position = Vector2(-166, 77)
+shape = SubResource("CircleShape2D_6w71y")
+debug_color = Color(0.41669622, 0.5729361, 0.5463501, 0.41960785)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered"]
+[connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited"]
+[connection signal="timeout" from="AttackDuration" to="." method="_on_attack_duration_timeout"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="area_entered" from="ChaseRange" to="." method="_on_chase_range_area_entered"]
+[connection signal="area_exited" from="ChaseRange" to="." method="_on_chase_range_area_exited"]
