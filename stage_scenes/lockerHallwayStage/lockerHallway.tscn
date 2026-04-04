@@ -33,9 +33,6 @@ shape = SubResource("RectangleShape2D_j1gbx")
 position = Vector2(-3.5, 174)
 shape = SubResource("RectangleShape2D_f86tg")
 
-[node name="right" type="CollisionShape2D" parent="delimitations" unique_id=619030672]
-position = Vector2(2754, 180)
-shape = SubResource("RectangleShape2D_f86tg")
 
 [node name="ZOMBIE" parent="." unique_id=1282098937 instance=ExtResource("2_f86tg")]
 position = Vector2(1275, 172)

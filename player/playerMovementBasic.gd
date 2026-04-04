@@ -18,7 +18,7 @@ var attack_fire_frame : int = 4 # The frame the beam appears
 var attack_end_frame : int = 16  # The frame the beam disappears
 
 func _ready() -> void:
-	# We must connect this signal so the script can watch the animation frames
+	add_to_group("player")
 	AS.frame_changed.connect(_on_animated_sprite_2d_frame_changed)
 
 func _physics_process(delta: float) -> void:
@@ -64,6 +64,12 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+	# Right boundary → go to next level
+	if global_position.x > GameManager.get_right_boundary():
+		GameManager.next_level()
+		return
+
 	handle_animation()
 
 func attack():
