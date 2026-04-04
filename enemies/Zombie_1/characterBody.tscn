@@ -145,7 +145,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8valw")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -165,7 +165,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iaean")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead",
 "speed": 5.0
 }, {
@@ -182,7 +182,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lce1t")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -240,13 +240,22 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4u0bv")
 }],
-"loop": false,
+"loop": true,
 "name": &"walk",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5oic3"]
 size = Vector2(31.0606, 67.42424)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjerw"]
+size = Vector2(74, 181)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1jjhi"]
+size = Vector2(169.75, 70.75)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cjerw"]
+radius = 109.07337
 
 [node name="ZOMBIE" type="CharacterBody2D" unique_id=1282098937]
 script = ExtResource("1_cjerw")
@@ -255,9 +264,49 @@ script = ExtResource("1_cjerw")
 position = Vector2(-161, 1)
 scale = Vector2(2.64, 2.64)
 sprite_frames = SubResource("SpriteFrames_cs6rd")
-animation = &"walk"
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1939036282]
 position = Vector2(-168, 83)
 scale = Vector2(2.64, 2.64)
 shape = SubResource("RectangleShape2D_5oic3")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=369031964]
+collision_layer = 8
+collision_mask = 4
+
+[node name="HurtboxCollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=512206488]
+position = Vector2(-168, 85)
+shape = SubResource("RectangleShape2D_cjerw")
+debug_color = Color(2.5027991e-06, 0.64455205, 0.28477475, 0.41960785)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=811941293]
+collision_layer = 16
+collision_mask = 0
+
+[node name="HitboxShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1232069484]
+position = Vector2(-170.125, 46.625)
+shape = SubResource("RectangleShape2D_1jjhi")
+disabled = true
+debug_color = Color(0.9762252, 0.11015553, 0.282299, 0.41960785)
+
+[node name="AttackRange" type="Area2D" parent="." unique_id=1179412548]
+collision_layer = 0
+collision_mask = 2
+
+[node name="AtkRangeCollisionShape2D" type="CollisionShape2D" parent="AttackRange" unique_id=661205528]
+position = Vector2(-170, 72)
+shape = SubResource("CircleShape2D_cjerw")
+debug_color = Color(0.49717373, 0.582545, 0, 0.41960785)
+
+[node name="AttackDuration" type="Timer" parent="." unique_id=866253816]
+one_shot = true
+
+[node name="AttackCooldown" type="Timer" parent="." unique_id=2016105861]
+one_shot = true
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered"]
+[connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited"]
+[connection signal="timeout" from="AttackDuration" to="." method="_on_attack_duration_timeout"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

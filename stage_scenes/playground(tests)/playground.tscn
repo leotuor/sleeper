@@ -17,7 +17,7 @@ texture = ExtResource("1_hislk")
 
 [node name="player" parent="." unique_id=847592616 instance=ExtResource("2_udvem")]
 texture_filter = 1
-position = Vector2(36, 167)
+position = Vector2(73, 169)
 
 [node name="playerHud" parent="." unique_id=1293400513 instance=ExtResource("3_31rrn")]
 

@@ -110,3 +110,14 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	elif AS.animation == "special_ability":
 		is_using_special = false
 		beam_origin.stop_beam() # This turns the beam off when the animation ends
+
+var vida: int = 100
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	# A configuração de Masks garante que apenas o Enemy Hitbox acione isto
+	tomar_dano(10)
+
+func tomar_dano(quantidade: int) -> void:
+	vida -= quantidade
+	if vida <= 0:
+		print("Game Over")

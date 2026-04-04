@@ -60,6 +60,14 @@ special_action={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Mundo"
+2d_physics/layer_2="Player_Hurtbox"
+2d_physics/layer_3="Player_Hitbox"
+2d_physics/layer_4="Enemy_Hurtbox"
+2d_physics/layer_5="Enemy_Hitbox"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
