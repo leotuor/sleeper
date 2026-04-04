@@ -30,8 +30,15 @@ func get_right_boundary() -> float:
 
 func start_game() -> void:
 	current_level_index = 0
+	current_hp = max_hp
 	_transitioning = false
 	get_tree().change_scene_to_file(levels[0]["scene"])
+
+func go_to_menu() -> void:
+	current_level_index = 0
+	current_hp = max_hp
+	_transitioning = false
+	get_tree().change_scene_to_file("res://Menu/menu.tscn")
 
 func next_level() -> void:
 	if _transitioning:

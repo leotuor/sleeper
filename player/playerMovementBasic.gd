@@ -123,7 +123,9 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		is_using_special = false
 		beam_origin.stop_beam()
 	elif AS.animation == "hurt":
-		tomando_dano = false	
+		tomando_dano = false
+	elif AS.animation == "dead":
+		GameManager.go_to_menu()
 
 func _on_hurtbox_area_entered(_area: Area2D) -> void:
 	# A configuração de Masks garante que apenas o Enemy Hitbox acione isto
