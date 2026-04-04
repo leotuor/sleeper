@@ -13,8 +13,8 @@ const JUMP_VELOCITY = -400.0
 # We use these to "lock" the player's state
 var is_attacking = false 
 var is_using_special = false 
-var tomando_dano = false;
-var morreu = false;
+var tomando_dano = false
+var morreu = false
 
 # The frame of your animation where the beam should actually appear
 var attack_fire_frame : int = 4 # The frame the beam appears
@@ -29,12 +29,12 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 		
 	if morreu:
-		return;	
+		return
 		
 	if tomando_dano:
 		velocity.x = 0
 		move_and_slide()
-		AS.play("hurt");
+		AS.play("hurt")
 		return
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -70,7 +70,7 @@ func _physics_process(delta: float) -> void:
 
 func attack():
 	is_attacking = true
-	HitboxCollition.disabled = false;
+	HitboxCollition.disabled = false
 	AS.play("attack")
 
 # 4. The new special ability function
@@ -91,13 +91,10 @@ func handle_animation():
 	else:
 		AS.play("running")
 
+# --- THIS IS THE BEAM FIRING LOGIC ---
 
-# --- THIS IS THE NEW BEAM FIRING LOGIC ---
-
-# This triggers every single time the animation moves to a new frame
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if AS.animation == "special_ability":
-		
 		# Turn the beam ON when we hit the start frame
 		if AS.frame == attack_fire_frame:
 			beam_origin.fire_beam()
@@ -110,25 +107,29 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if AS.animation == "attack":
 		is_attacking = false
-		HitboxCollition.disabled = true;
+		HitboxCollition.disabled = true
 	elif AS.animation == "special_ability":
 		is_using_special = false
 		beam_origin.stop_beam()
 	elif AS.animation == "hurt":
 		tomando_dano = false	
 
-
-func _on_hurtbox_area_entered(area: Area2D) -> void:
+func _on_hurtbox_area_entered(_area: Area2D) -> void:
 	# A configuração de Masks garante que apenas o Enemy Hitbox acione isto
 	tomar_dano(20)
 
 func tomar_dano(quantidade: int) -> void:
+	# If the player is shooting the laser, ignore the damage entirely and exit this function early.
+	if is_using_special:
+		return
+	# ------------------------------------
+
 	GameManager.update_hp(-quantidade)
-	tomando_dano = true;
+	tomando_dano = true
 	print(GameManager.current_hp)
 	if GameManager.current_hp <= 0 and not morreu:
-		morreu = true;
-		AS.play('dead');
+		morreu = true
+		AS.play('dead')
 		desativar_todas_colisoes(self)
 		
 func desativar_todas_colisoes(no: Node) -> void:
