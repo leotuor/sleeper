@@ -2,12 +2,11 @@ extends Node2D
 
 @export var beam_frames: Array[Texture2D] # Drag your beam animation frames here in the Inspector
 @export var animation_fps: float = 12.0 # Speed of the beam animation
+@export var fixed_beam_length : float = 800.0 # Change this number to whatever fits your screen!
 
 @onready var raycast = $RayCast2D
 @onready var body = $BodySprite
 @onready var hitbox_shape = $BeamHitbox/CollisionShape2D
-
-@export var fixed_beam_length : float = 800.0 # Change this number to whatever fits your screen!
 
 var max_beam_distance : float = 1200.0
 var current_frame_index : float = 0.0
@@ -25,10 +24,12 @@ func _physics_process(delta):
 func fire_beam():
 	visible = true
 	$BeamHitbox.monitoring = true
+	hitbox_shape.disabled = false;
 	current_frame_index = 0.0 # Reset animation when fired
 
 # Turns the beam off
 func stop_beam():
+	hitbox_shape.disabled = true;
 	visible = false
 	$BeamHitbox.monitoring = false
 

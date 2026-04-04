@@ -145,9 +145,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2ng6k")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -165,7 +165,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wbtl7")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead",
 "speed": 5.0
 }, {
@@ -182,9 +182,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ayg6g")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -246,18 +246,81 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5oic3"]
-size = Vector2(49.5, 82)
+size = Vector2(70, 181)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_msf1r"]
+size = Vector2(74, 181)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tm8d1"]
+size = Vector2(169.75, 70.75)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d08k7"]
+radius = 109.07337
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iqvia"]
+radius = 467.00964
 
 [node name="ZOMBIE2WOMAN" type="CharacterBody2D" unique_id=1282098937]
 script = ExtResource("1_msf1r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=824797606]
-position = Vector2(-161, 1)
-scale = Vector2(1.15, 1.15)
+position = Vector2(-161, 3.9079967)
+scale = Vector2(2.581, 2.6264374)
 sprite_frames = SubResource("SpriteFrames_dcgde")
 animation = &"walk"
-frame_progress = 0.6210768
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1939036282]
-position = Vector2(-168.25, 34)
+position = Vector2(-168, 83.5)
 shape = SubResource("RectangleShape2D_5oic3")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1960332215]
+collision_layer = 8
+collision_mask = 4
+
+[node name="HurtboxCollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1613235490]
+position = Vector2(-168, 85)
+shape = SubResource("RectangleShape2D_msf1r")
+debug_color = Color(2.5027991e-06, 0.64455205, 0.28477475, 0.41960785)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1787872714]
+collision_layer = 16
+collision_mask = 0
+
+[node name="HitboxShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=461510388]
+position = Vector2(-170.125, 46.625)
+shape = SubResource("RectangleShape2D_tm8d1")
+disabled = true
+debug_color = Color(0.9762252, 0.11015553, 0.282299, 0.41960785)
+
+[node name="AttackRange" type="Area2D" parent="." unique_id=693889064]
+collision_layer = 0
+collision_mask = 2
+
+[node name="AtkRangeCollisionShape2D" type="CollisionShape2D" parent="AttackRange" unique_id=848506788]
+position = Vector2(-170, 72)
+shape = SubResource("CircleShape2D_d08k7")
+debug_color = Color(0.49717373, 0.582545, 0, 0.41960785)
+
+[node name="AttackDuration" type="Timer" parent="." unique_id=2062468303]
+one_shot = true
+
+[node name="AttackCooldown" type="Timer" parent="." unique_id=287933559]
+one_shot = true
+
+[node name="ChaseRange" type="Area2D" parent="." unique_id=110456563]
+collision_layer = 0
+collision_mask = 2
+
+[node name="ChaseRangeCollisionShape2D" type="CollisionShape2D" parent="ChaseRange" unique_id=1877944422]
+position = Vector2(-166, 77)
+shape = SubResource("CircleShape2D_iqvia")
+debug_color = Color(0.41669622, 0.5729361, 0.5463501, 0.41960785)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered"]
+[connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited"]
+[connection signal="timeout" from="AttackDuration" to="." method="_on_attack_duration_timeout"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="area_entered" from="ChaseRange" to="." method="_on_chase_range_area_entered"]
+[connection signal="area_exited" from="ChaseRange" to="." method="_on_chase_range_area_exited"]

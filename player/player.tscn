@@ -12,8 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://dgsjaxej2a3qw" path="res://player/sprites/loopable_beam2.png" id="11_yllr7"]
 [ext_resource type="Texture2D" uid="uid://b6i4v3wcrw4ys" path="res://player/sprites/loopable_beam_all.png" id="12_ebec5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
-size = Vector2(97, 184.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ieo8"]
+size = Vector2(88.5, 182)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_knn7v"]
 atlas = ExtResource("2_2hs0m")
@@ -327,20 +327,22 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebec5"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yllr7"]
+size = Vector2(36, 72)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=847592616]
 script = ExtResource("1_onrkg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=154368129]
-position = Vector2(-3.5, 76.75)
-shape = SubResource("RectangleShape2D_4flbx")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=888085162]
+position = Vector2(4, 81)
+shape = SubResource("RectangleShape2D_2ieo8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=421533083]
 texture_filter = 1
 position = Vector2(19, 73)
 scale = Vector2(2.4468288, 2.5119433)
 sprite_frames = SubResource("SpriteFrames_efrwb")
-animation = &"special_ability"
-frame = 5
+animation = &"dead"
 
 [node name="BeamOrigin" type="Node2D" parent="AnimatedSprite2D" unique_id=1918283199]
 position = Vector2(34.33015, -18.312515)
@@ -359,8 +361,31 @@ hframes = 3
 region_enabled = true
 
 [node name="BeamHitbox" type="Area2D" parent="AnimatedSprite2D/BeamOrigin" unique_id=1780251873]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/BeamOrigin/BeamHitbox" unique_id=1664607369]
 shape = SubResource("RectangleShape2D_ebec5")
+disabled = true
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1456924612]
+collision_layer = 2
+collision_mask = 16
+
+[node name="HurtboxCollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1491341692]
+position = Vector2(13, 80)
+shape = SubResource("RectangleShape2D_2ieo8")
+debug_color = Color(1.2513996e-06, 0.6494491, 0.15564391, 0.41960785)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=995265170]
+collision_layer = 4
+collision_mask = 0
+
+[node name="HitboxCollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1544640329]
+position = Vector2(69, 52)
+shape = SubResource("RectangleShape2D_yllr7")
+disabled = true
+debug_color = Color(0.6288212, 0.021967957, 0.15263021, 0.41960785)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
