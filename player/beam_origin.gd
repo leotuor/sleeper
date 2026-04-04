@@ -25,10 +25,12 @@ func _physics_process(delta):
 func fire_beam():
 	visible = true
 	$BeamHitbox.monitoring = true
+	hitbox_shape.disabled = false;
 	current_frame_index = 0.0 # Reset animation when fired
 
 # Turns the beam off
 func stop_beam():
+	hitbox_shape.disabled = true;
 	visible = false
 	$BeamHitbox.monitoring = false
 

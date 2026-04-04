@@ -361,9 +361,12 @@ hframes = 3
 region_enabled = true
 
 [node name="BeamHitbox" type="Area2D" parent="AnimatedSprite2D/BeamOrigin" unique_id=1780251873]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/BeamOrigin/BeamHitbox" unique_id=1664607369]
 shape = SubResource("RectangleShape2D_ebec5")
+disabled = true
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1456924612]
 collision_layer = 2

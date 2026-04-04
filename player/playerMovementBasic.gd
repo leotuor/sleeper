@@ -61,16 +61,6 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-		
-		if direction:
-			velocity.x = direction * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-		
-		if direction:
-			velocity.x = direction * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
 	else:
 		# Stop movement while attacking or using special ability
 		velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -127,16 +117,16 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	elif AS.animation == "hurt":
 		tomando_dano = false	
 
-var vida: int = 100
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	# A configuração de Masks garante que apenas o Enemy Hitbox acione isto
 	tomar_dano(20)
 
 func tomar_dano(quantidade: int) -> void:
-	vida -= quantidade
+	GameManager.update_hp(-quantidade)
 	tomando_dano = true;
-	if vida <= 0 and not morreu:
+	print(GameManager.current_hp)
+	if GameManager.current_hp <= 0 and not morreu:
 		morreu = true;
 		AS.play('dead');
 		desativar_todas_colisoes(self)
