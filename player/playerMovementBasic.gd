@@ -26,6 +26,7 @@ func _ready() -> void:
 	AS.frame_changed.connect(_on_animated_sprite_2d_frame_changed)
 	camera.limit_left = 0
 	camera.limit_right = int(GameManager.get_right_boundary())
+	camera.position_smoothing_enabled = false
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -69,6 +70,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	camera.position.y = 180.0 - global_position.y
 
 	# Right boundary → go to next level
 	if global_position.x > GameManager.get_right_boundary():

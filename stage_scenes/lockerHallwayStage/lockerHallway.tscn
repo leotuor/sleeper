@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dinb7r83hubng" path="res://backgrounds/Screenshot_1.png" id="1_btp4x"]
 [ext_resource type="PackedScene" uid="uid://bltf3lrsppn8" path="res://enemies/Zombie_1/characterBody.tscn" id="2_f86tg"]
 [ext_resource type="PackedScene" uid="uid://766jsikflxl" path="res://player/player.tscn" id="3_t7n8v"]
+[ext_resource type="PackedScene" uid="uid://d022l25jcpys6" path="res://ui_components/health_bar/player_hud.tscn" id="4_nlw5w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1gbx"]
 size = Vector2(2762, 20)
@@ -33,9 +34,10 @@ shape = SubResource("RectangleShape2D_j1gbx")
 position = Vector2(-3.5, 174)
 shape = SubResource("RectangleShape2D_f86tg")
 
-
 [node name="ZOMBIE" parent="." unique_id=1282098937 instance=ExtResource("2_f86tg")]
 position = Vector2(1275, 172)
 
 [node name="CharacterBody2D" parent="." unique_id=847592616 instance=ExtResource("3_t7n8v")]
 position = Vector2(126, 169)
+
+[node name="playerHud" parent="." unique_id=1293400513 instance=ExtResource("4_nlw5w")]
