@@ -18,7 +18,26 @@ var levels: Array = [
 		"scene": "res://stage_scenes/lockerHallwayStage/lockerHallway.tscn",
 		"right_boundary": 2740.0
 	},
+	{
+		"scene": "res://stage_scenes/corredorStage/corredor.tscn",
+		"right_boundary": 2740.0
+	},
+	{
+		"scene": "res://stage_scenes/salaDeAulaStage/salaDeAula.tscn",
+		"right_boundary": 2740.0
+	},
 ]
+
+func _ready() -> void:
+	var timer = Timer.new()
+	timer.wait_time = 3.0
+	timer.autostart = true
+	timer.timeout.connect(_auto_heal)
+	add_child(timer)
+
+func _auto_heal() -> void:
+	if current_hp > 0 and current_hp < max_hp:
+		update_hp(1.0)
 
 func update_hp(amount: float):
 	current_hp += amount
@@ -44,5 +63,8 @@ func next_level() -> void:
 	if _transitioning:
 		return
 	_transitioning = true
-	current_level_index = (current_level_index + 1) % levels.size()
-	get_tree().change_scene_to_file(levels[current_level_index]["scene"])
+	if current_level_index >= levels.size() - 1:
+		go_to_menu()
+	else:
+		current_level_index += 1
+		get_tree().change_scene_to_file(levels[current_level_index]["scene"])

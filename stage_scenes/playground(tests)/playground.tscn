@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://d1on2blmknmk" path="res://steak_pickup/BackgroundImage.png" id="1_hislk"]
 [ext_resource type="PackedScene" uid="uid://766jsikflxl" path="res://player/player.tscn" id="2_udvem"]
 [ext_resource type="PackedScene" uid="uid://d022l25jcpys6" path="res://ui_components/health_bar/player_hud.tscn" id="3_31rrn"]
-[ext_resource type="PackedScene" uid="uid://cw1phjjcb62lx" path="res://steak_pickup/steak_pickup_scene.tscn" id="4_0rqtv"]
 [ext_resource type="PackedScene" uid="uid://5revesvgs5y5" path="res://enemies/Zombie_4/characterBody.tscn" id="7_31rrn"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rupst"]
@@ -24,20 +23,11 @@ position = Vector2(42, 173)
 
 [node name="playerHud" parent="." unique_id=1293400513 instance=ExtResource("3_31rrn")]
 
-[node name="SteakPickup" parent="." unique_id=1525666953 instance=ExtResource("4_0rqtv")]
-position = Vector2(590, 303)
-
 [node name="floorBody" type="StaticBody2D" parent="." unique_id=2080863513]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floorBody" unique_id=2054623472]
 position = Vector2(0, 349)
 shape = SubResource("WorldBoundaryShape2D_rupst")
-
-[node name="SteakPickup2" parent="." unique_id=1911869503 instance=ExtResource("4_0rqtv")]
-position = Vector2(504, 303)
-
-[node name="SteakPickup3" parent="." unique_id=80639643 instance=ExtResource("4_0rqtv")]
-position = Vector2(438, 299)
 
 [node name="LeftWall" type="StaticBody2D" parent="." unique_id=987654321]
 position = Vector2(0, 180)

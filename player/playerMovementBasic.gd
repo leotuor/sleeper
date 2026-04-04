@@ -22,6 +22,7 @@ var attack_fire_frame : int = 4 # The frame the beam appears
 var attack_end_frame : int = 16  # The frame the beam disappears
 
 func _ready() -> void:
+	GameManager._transitioning = false
 	add_to_group("player")
 	AS.frame_changed.connect(_on_animated_sprite_2d_frame_changed)
 	camera.limit_left = 0
