@@ -11,10 +11,6 @@ var _transitioning: bool = false
 
 var levels: Array = [
 	{
-		"scene": "res://stage_scenes/playground(tests)/playground.tscn",
-		"right_boundary": 635.0
-	},
-	{
 		"scene": "res://stage_scenes/lockerHallwayStage/lockerHallway.tscn",
 		"right_boundary": 2740.0
 	},
@@ -25,6 +21,10 @@ var levels: Array = [
 	{
 		"scene": "res://stage_scenes/salaDeAulaStage/salaDeAula.tscn",
 		"right_boundary": 2740.0
+	},
+	{
+		"scene": "res://stage_scenes/directoriaStage/diretoria.tscn",
+		"right_boundary": 1760.0
 	},
 ]
 
