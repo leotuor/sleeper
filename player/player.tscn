@@ -342,8 +342,7 @@ texture_filter = 1
 position = Vector2(19, 73)
 scale = Vector2(2.4468288, 2.5119433)
 sprite_frames = SubResource("SpriteFrames_efrwb")
-animation = &"special_ability"
-frame = 5
+animation = &"dead"
 
 [node name="BeamOrigin" type="Node2D" parent="AnimatedSprite2D" unique_id=1918283199]
 position = Vector2(34.33015, -18.312515)
@@ -382,6 +381,7 @@ collision_mask = 0
 [node name="HitboxCollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1544640329]
 position = Vector2(69, 52)
 shape = SubResource("RectangleShape2D_yllr7")
+disabled = true
 debug_color = Color(0.6288212, 0.021967957, 0.15263021, 0.41960785)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

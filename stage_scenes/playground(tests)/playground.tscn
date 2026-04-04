@@ -17,7 +17,7 @@ texture = ExtResource("1_hislk")
 
 [node name="player" parent="." unique_id=847592616 instance=ExtResource("2_udvem")]
 texture_filter = 1
-position = Vector2(73, 169)
+position = Vector2(42, 173)
 
 [node name="playerHud" parent="." unique_id=1293400513 instance=ExtResource("3_31rrn")]
 
@@ -31,7 +31,7 @@ position = Vector2(0, 349)
 shape = SubResource("WorldBoundaryShape2D_rupst")
 
 [node name="ZOMBIE" parent="." unique_id=1282098937 instance=ExtResource("5_ntwlw")]
-position = Vector2(498, 170)
+position = Vector2(738, 165)
 
 [node name="SteakPickup2" parent="." unique_id=1911869503 instance=ExtResource("4_0rqtv")]
 position = Vector2(504, 303)
