@@ -5,7 +5,6 @@ const JUMP_VELOCITY = -400.0
 
 @onready var AS = $AnimatedSprite2D
 @onready var HitboxCollition = $Hitbox/HitboxCollisionShape2D
-@onready var steak = $"../SteakPickup"
 @onready var camera: Camera2D = $Camera2D
 
 # THIS IS THE MISSING LINK! We need to grab the BeamOrigin node.
