@@ -5,7 +5,7 @@ const JUMP_VELOCITY = -400.0
 
 @onready var AS = $AnimatedSprite2D
 @onready var HitboxCollition = $Hitbox/HitboxCollisionShape2D
-@onready var steak = $"../SteakPickup"
+@onready var camera: Camera2D = $Camera2D
 
 # THIS IS THE MISSING LINK! We need to grab the BeamOrigin node.
 @onready var beam_origin = $AnimatedSprite2D/BeamOrigin
@@ -21,8 +21,12 @@ var attack_fire_frame : int = 4 # The frame the beam appears
 var attack_end_frame : int = 16  # The frame the beam disappears
 
 func _ready() -> void:
-	# We must connect this signal so the script can watch the animation frames
+	GameManager._transitioning = false
+	add_to_group("player")
 	AS.frame_changed.connect(_on_animated_sprite_2d_frame_changed)
+	camera.limit_left = 0
+	camera.limit_right = int(GameManager.get_right_boundary())
+	camera.position_smoothing_enabled = false
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -66,6 +70,13 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	camera.position.y = 180.0 - global_position.y
+
+	# Right boundary → go to next level
+	if global_position.x > GameManager.get_right_boundary():
+		GameManager.next_level()
+		return
+
 	handle_animation()
 
 func attack():
@@ -112,7 +123,9 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		is_using_special = false
 		beam_origin.stop_beam()
 	elif AS.animation == "hurt":
-		tomando_dano = false	
+		tomando_dano = false
+	elif AS.animation == "dead":
+		GameManager.go_to_menu()
 
 func _on_hurtbox_area_entered(_area: Area2D) -> void:
 	# A configuração de Masks garante que apenas o Enemy Hitbox acione isto

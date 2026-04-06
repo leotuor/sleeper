@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var vida: int = 100
+var vida: int = 60
 
 @export var speed: float = 40.0
 @export var chase_speed: float = 60.0
@@ -80,7 +80,7 @@ func desativar_todas_colisoes(no: Node) -> void:
 		if filho.get_child_count() > 0:
 			desativar_todas_colisoes(filho)
 
-func _on_hurtbox_area_entered(area: Area2D) -> void:
+func _on_hurtbox_area_entered(_area: Area2D) -> void:
 	tomar_dano(20)
 
 func tomar_dano(quantidade: int) -> void:
@@ -101,6 +101,7 @@ func tomar_dano(quantidade: int) -> void:
 		is_dead = true
 		desativar_todas_colisoes(self)
 		anim.play("dead")
+		drop_food()
 	else:
 		anim.play("hurt")
 
@@ -113,25 +114,33 @@ func _on_attack_cooldown_timeout() -> void:
 	pode_atacar = true
 
 func _on_attack_range_area_entered(area: Area2D) -> void:
-	if area.get_parent().name.to_lower() == "player":
+	if area.get_parent().is_in_group("player"):
 		jogador_na_area = true
 
 func _on_attack_range_area_exited(area: Area2D) -> void:
-	if area.get_parent().name.to_lower() == "player":
+	if area.get_parent().is_in_group("player"):
 		jogador_na_area = false
 
 func _on_chase_range_area_entered(area: Area2D) -> void:
 	var pai = area.get_parent()
-	if pai.name.to_lower() == "player":
+	if pai.is_in_group("player"):
 		perseguindo_jogador = true
 		alvo = pai
 
 func _on_chase_range_area_exited(area: Area2D) -> void:
 	var pai = area.get_parent()
-	if pai.name.to_lower() == "player":
+	if pai.is_in_group("player"):
 		perseguindo_jogador = false
 		alvo = null
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim.animation == "hurt":
 		tomando_dano = false
+
+func drop_food() -> void:
+	var count = randi() % 4
+	var steak_scene = preload("res://steak_pickup/steak_pickup_scene.tscn")
+	for i in count:
+		var steak = steak_scene.instantiate()
+		steak.position = position + Vector2(randf_range(-30, 30), 155)
+		get_parent().call_deferred("add_child", steak)

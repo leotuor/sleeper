@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://cnraxce1c2j6c"]
+
+[ext_resource type="Texture2D" uid="uid://btasht1lyt7tn" path="res://backgrounds/saladeaula.png" id="1_sala"]
+[ext_resource type="PackedScene" uid="uid://bltf3lrsppn8" path="res://enemies/Zombie_1/characterBody.tscn" id="2_z1"]
+[ext_resource type="PackedScene" uid="uid://b5wh5g5nie70" path="res://enemies/Zombie_2/characterBody.tscn" id="3_z2"]
+[ext_resource type="PackedScene" uid="uid://bhahoctgv4sin" path="res://enemies/Zombie_3/characterBody.tscn" id="4_z3"]
+[ext_resource type="PackedScene" uid="uid://5revesvgs5y5" path="res://enemies/Zombie_4/characterBody.tscn" id="5_z4"]
+[ext_resource type="PackedScene" uid="uid://766jsikflxl" path="res://player/player.tscn" id="6_player"]
+[ext_resource type="PackedScene" uid="uid://d022l25jcpys6" path="res://ui_components/health_bar/player_hud.tscn" id="7_hud"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ceil"]
+size = Vector2(2762, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(2762, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(13, 368)
+
+[node name="SalaDeAula" type="Node2D" unique_id=401937711]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=402760785]
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=403811672]
+position = Vector2(1368.5001, 143.00002)
+scale = Vector2(1.0777344, 0.6307054)
+texture = ExtResource("1_sala")
+
+[node name="delimitations" type="StaticBody2D" parent="." unique_id=404343391]
+
+[node name="Ceil" type="CollisionShape2D" parent="delimitations" unique_id=404203731]
+position = Vector2(1373, -4)
+shape = SubResource("RectangleShape2D_ceil")
+
+[node name="floor" type="CollisionShape2D" parent="delimitations" unique_id=405575987]
+position = Vector2(1388, 358)
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="left" type="CollisionShape2D" parent="delimitations" unique_id=406975776]
+position = Vector2(-3.5, 174)
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="Z1_1" parent="." unique_id=410098001 instance=ExtResource("2_z1")]
+position = Vector2(500, 172)
+
+[node name="Z2_1" parent="." unique_id=410098002 instance=ExtResource("3_z2")]
+position = Vector2(900, 172)
+
+[node name="Z2_2" parent="." unique_id=410098003 instance=ExtResource("3_z2")]
+position = Vector2(1400, 172)
+
+[node name="Z3_1" parent="." unique_id=410198001 instance=ExtResource("4_z3")]
+position = Vector2(1200, 172)
+
+[node name="Z3_2" parent="." unique_id=410198002 instance=ExtResource("4_z3")]
+position = Vector2(1700, 172)
+
+[node name="Z3_3" parent="." unique_id=410198003 instance=ExtResource("4_z3")]
+position = Vector2(2100, 172)
+
+[node name="Z4_1" parent="." unique_id=410298001 instance=ExtResource("5_z4")]
+position = Vector2(1600, 172)
+
+[node name="Z4_2" parent="." unique_id=410298002 instance=ExtResource("5_z4")]
+position = Vector2(2000, 172)
+
+[node name="Z4_3" parent="." unique_id=410298003 instance=ExtResource("5_z4")]
+position = Vector2(2300, 172)
+
+[node name="Z4_4" parent="." unique_id=410298004 instance=ExtResource("5_z4")]
+position = Vector2(2550, 172)
+
+[node name="CharacterBody2D" parent="." unique_id=411592616 instance=ExtResource("6_player")]
+position = Vector2(126, 169)
+
+[node name="playerHud" parent="." unique_id=412400513 instance=ExtResource("7_hud")]
