@@ -3,25 +3,27 @@
 [ext_resource type="Texture2D" uid="uid://d1on2blmknmk" path="res://steak_pickup/BackgroundImage.png" id="1_hislk"]
 [ext_resource type="PackedScene" uid="uid://766jsikflxl" path="res://player/player.tscn" id="2_udvem"]
 [ext_resource type="PackedScene" uid="uid://d022l25jcpys6" path="res://ui_components/health_bar/player_hud.tscn" id="3_31rrn"]
-[ext_resource type="PackedScene" uid="uid://5revesvgs5y5" path="res://enemies/Zombie_4/characterBody.tscn" id="7_31rrn"]
+[ext_resource type="PackedScene" uid="uid://cw1phjjcb62lx" path="res://steak_pickup/steak_pickup_scene.tscn" id="4_0rqtv"]
+[ext_resource type="PackedScene" uid="uid://bltf3lrsppn8" path="res://enemies/Zombie_1/characterBody.tscn" id="5_ntwlw"]
+[ext_resource type="PackedScene" uid="uid://be8mgku0wwtq" path="res://pausemenu.tscn" id="6_udvem"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rupst"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_leftwall"]
-size = Vector2(10, 400)
 
 [node name="Playground" type="Node2D" unique_id=857691302]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=938466470]
-position = Vector2(320, 179.50002)
-scale = Vector2(0.8333332, 1.0466472)
+position = Vector2(360, 232.99998)
+scale = Vector2(0.935, 0.935)
 texture = ExtResource("1_hislk")
 
 [node name="player" parent="." unique_id=847592616 instance=ExtResource("2_udvem")]
 texture_filter = 1
-position = Vector2(42, 173)
+position = Vector2(522, 184)
 
 [node name="playerHud" parent="." unique_id=1293400513 instance=ExtResource("3_31rrn")]
+
+[node name="SteakPickup" parent="." unique_id=1525666953 instance=ExtResource("4_0rqtv")]
+position = Vector2(677, 309)
 
 [node name="floorBody" type="StaticBody2D" parent="." unique_id=2080863513]
 
@@ -29,14 +31,13 @@ position = Vector2(42, 173)
 position = Vector2(0, 349)
 shape = SubResource("WorldBoundaryShape2D_rupst")
 
-[node name="LeftWall" type="StaticBody2D" parent="." unique_id=987654321]
-position = Vector2(0, 180)
+[node name="ZOMBIE" parent="." unique_id=1282098937 instance=ExtResource("5_ntwlw")]
+position = Vector2(82, 174)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall" unique_id=876543210]
-shape = SubResource("RectangleShape2D_leftwall")
+[node name="SteakPickup2" parent="." unique_id=1911869503 instance=ExtResource("4_0rqtv")]
+position = Vector2(547, 310)
 
-[node name="ZOMBIE" parent="." unique_id=1282098937 instance=ExtResource("7_31rrn")]
-position = Vector2(80, 167)
+[node name="SteakPickup3" parent="." unique_id=80639643 instance=ExtResource("4_0rqtv")]
+position = Vector2(438, 308)
 
-[node name="ZOMBIE4MULHER" parent="." unique_id=420011891 instance=ExtResource("7_31rrn")]
-position = Vector2(613, 175)
+[node name="Pausemenu" parent="." unique_id=266545456 instance=ExtResource("6_udvem")]
