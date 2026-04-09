@@ -80,7 +80,10 @@ func desativar_todas_colisoes(no: Node) -> void:
 		if filho.get_child_count() > 0:
 			desativar_todas_colisoes(filho)
 
-func _on_hurtbox_area_entered(_area: Area2D) -> void:
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.name == "BeamHitbox":
+		tomar_dano(vida)
+	
 	tomar_dano(20)
 
 func tomar_dano(quantidade: int) -> void:
