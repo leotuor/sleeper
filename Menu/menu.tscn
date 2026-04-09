@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://oahyngxfvdoy" path="res://menu/menu.gd" id="1_raj00"]
 [ext_resource type="Texture2D" uid="uid://ddgmlw70yte4n" path="res://menu/Menu.png" id="2_8w4re"]
 [ext_resource type="FontFile" uid="uid://c8xoj7hudy1h4" path="res://menu/Orange Kid.otf" id="3_ofseh"]
-[ext_resource type="Script" uid="uid://b00vbdaamfj2m" path="res://menu/video.gd" id="4_8w4re"]
+[ext_resource type="Script" path="res://menu/video.gd" id="4_8w4re"]
 
 [node name="MainMenu" type="Control" unique_id=1187686995]
 layout_mode = 3
@@ -27,7 +27,7 @@ offset_bottom = 2.1600037
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_8w4re")
-stretch_mode = 1
+expand_mode = 1
 
 [node name="Menu" type="VBoxContainer" parent="." unique_id=1746423954]
 custom_minimum_size = Vector2(100, 100)
@@ -49,12 +49,15 @@ size_flags_vertical = 7
 
 [node name="Play" type="Button" parent="Menu/Control" unique_id=321582253]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -21.5
-offset_bottom = 21.5
+anchors_preset = -1
+anchor_left = 0.141
+anchor_top = -0.209
+anchor_right = 0.87100005
+anchor_bottom = 0.791
+offset_left = -0.09600067
+offset_top = -0.012999535
+offset_right = 0.023986816
+offset_bottom = -0.013000488
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(50, 15.5)
@@ -70,12 +73,15 @@ size_flags_vertical = 7
 
 [node name="Settings" type="Button" parent="Menu/Control2" unique_id=1734681951]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -21.5
-offset_bottom = 21.5
+anchors_preset = -1
+anchor_left = 0.141
+anchor_top = -0.256
+anchor_right = 0.86700004
+anchor_bottom = 0.744
+offset_left = -0.09600067
+offset_top = 0.008000374
+offset_right = 0.04798889
+offset_bottom = 0.00799942
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(50, 15.5)
@@ -91,12 +97,15 @@ size_flags_vertical = 7
 
 [node name="Exit" type="Button" parent="Menu/Control3" unique_id=1259767627]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -21.5
-offset_bottom = 21.5
+anchors_preset = -1
+anchor_left = 0.141
+anchor_top = -0.256
+anchor_right = 0.87100005
+anchor_bottom = 0.744
+offset_left = -0.09600067
+offset_top = 0.008000374
+offset_right = 0.023986816
+offset_bottom = 0.00799942
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(50, 15.5)
