@@ -260,6 +260,7 @@ script = ExtResource("1_2n671")
 position = Vector2(-161, 4.4400063)
 scale = Vector2(2.58, 2.63375)
 sprite_frames = SubResource("SpriteFrames_dcgde")
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1939036282]
 position = Vector2(-171.5, 84.75)
@@ -307,6 +308,10 @@ collision_mask = 2
 position = Vector2(-166, 77)
 shape = SubResource("CircleShape2D_eoiap")
 debug_color = Color(0.41669622, 0.5729361, 0.5463501, 0.41960785)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=886369969]
+position = Vector2(-197, 1)
+rect = Rect2(-50, -10, 151, 185)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
