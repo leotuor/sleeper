@@ -10,6 +10,7 @@ var vida: int = 150
 @onready var hitbox_shape = $Hitbox/HitboxShape2D
 @onready var cooldown_timer = $AttackCooldown
 @onready var duration_timer = $AttackDuration
+@onready var screen_notifier = $VisibleOnScreenNotifier2D
 
 var direction := 1
 var jogador_na_area: bool = false
@@ -81,8 +82,8 @@ func desativar_todas_colisoes(no: Node) -> void:
 			desativar_todas_colisoes(filho)
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	if area.name == "BeamHitbox":
-		tomar_dano(vida)
+	if area.name == "BeamHitbox" && screen_notifier.is_on_screen():
+		tomar_dano(vida) #Instant Kill
 	
 	tomar_dano(20)
 

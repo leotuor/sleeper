@@ -318,6 +318,9 @@ radius = 467.00964
 
 [node name="ZOMBIE4MULHER" type="CharacterBody2D" unique_id=1282098937]
 script = ExtResource("1_kr3kw")
+speed = null
+chase_speed = null
+gravity = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=824797606]
 position = Vector2(-161, 1)
@@ -371,6 +374,10 @@ collision_mask = 2
 position = Vector2(-166, 77)
 shape = SubResource("CircleShape2D_6w71y")
 debug_color = Color(0.41669622, 0.5729361, 0.5463501, 0.41960785)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=309444577]
+position = Vector2(-198, 0)
+rect = Rect2(-28, -10, 138, 186)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

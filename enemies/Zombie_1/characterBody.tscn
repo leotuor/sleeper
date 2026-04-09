@@ -319,6 +319,10 @@ position = Vector2(-166, 77)
 shape = SubResource("CircleShape2D_1jjhi")
 debug_color = Color(0.41669622, 0.5729361, 0.5463501, 0.41960785)
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2025481461]
+position = Vector2(-223, 5)
+rect = Rect2(5, -10, 101, 178)
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered"]
