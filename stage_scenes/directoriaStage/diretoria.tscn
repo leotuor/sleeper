@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://be8mgku0wwtq" path="res://pausemenu.tscn" id="6_a44be"]
 [ext_resource type="PackedScene" uid="uid://boss_character_body" path="res://enemies/Boss/characterBody.tscn" id="7_boss"]
 [ext_resource type="PackedScene" uid="uid://boss_hud_scene" path="res://ui_components/boss_hud/boss_hud.tscn" id="8_bosshud"]
-[ext_resource type="Script" uid="uid://diretoria_script" path="res://stage_scenes/directoriaStage/diretoria.gd" id="9_dirscript"]
+[ext_resource type="Script" uid="uid://duo3ueqp7d2me" path="res://stage_scenes/directoriaStage/diretoria.gd" id="9_dirscript"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ceil"]
 size = Vector2(1800, 20)

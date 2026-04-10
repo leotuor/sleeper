@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://boss_hud_scene"]
 
-[ext_resource type="Script" uid="uid://boss_hud_script" path="res://ui_components/boss_hud/boss_hud.gd" id="1_bhud"]
+[ext_resource type="Script" uid="uid://c10kdimtic3ot" path="res://ui_components/boss_hud/boss_hud.gd" id="1_bhud"]
 
 [node name="BossHud" type="CanvasLayer"]
 visible = false

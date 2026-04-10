@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://oahyngxfvdoy" path="res://menu/menu.gd" id="1_raj00"]
 [ext_resource type="Texture2D" uid="uid://ddgmlw70yte4n" path="res://menu/Menu.png" id="2_8w4re"]
 [ext_resource type="FontFile" uid="uid://c8xoj7hudy1h4" path="res://menu/Orange Kid.otf" id="3_ofseh"]
-[ext_resource type="Script" path="res://menu/video.gd" id="4_8w4re"]
+[ext_resource type="Script" path="res://Menu/video.gd" id="4_8w4re"]
 
 [node name="MainMenu" type="Control" unique_id=1187686995]
 layout_mode = 3

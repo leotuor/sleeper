@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://boss_character_body"]
 
-[ext_resource type="Script" uid="uid://boss_script" path="res://enemies/Boss/script.gd" id="1_boss"]
+[ext_resource type="Script" uid="uid://c6c8bohaodq2x" path="res://enemies/Boss/script.gd" id="1_boss"]
 [ext_resource type="Texture2D" uid="uid://bh01d0c4iqcgq" path="res://enemies/Zombie_4/sprites/Attack.png" id="2_xt37u"]
 [ext_resource type="Texture2D" uid="uid://bq10n638uxcxx" path="res://enemies/Zombie_4/sprites/Dead.png" id="3_lfvto"]
 [ext_resource type="Texture2D" uid="uid://byn5c16i11qfl" path="res://enemies/Zombie_4/sprites/Hurt.png" id="4_6w71y"]
