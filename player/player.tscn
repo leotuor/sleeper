@@ -373,7 +373,7 @@ collision_layer = 2
 collision_mask = 16
 
 [node name="HurtboxCollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1491341692]
-position = Vector2(13, 80)
+position = Vector2(4, 82)
 shape = SubResource("RectangleShape2D_2ieo8")
 debug_color = Color(1.2513996e-06, 0.6494491, 0.15564391, 0.41960785)
 
@@ -387,7 +387,7 @@ shape = SubResource("RectangleShape2D_yllr7")
 disabled = true
 debug_color = Color(0.6288212, 0.021967957, 0.15263021, 0.41960785)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1359558111]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
