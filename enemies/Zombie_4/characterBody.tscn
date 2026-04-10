@@ -318,15 +318,14 @@ radius = 467.00964
 
 [node name="ZOMBIE4MULHER" type="CharacterBody2D" unique_id=1282098937]
 script = ExtResource("1_kr3kw")
-speed = null
-chase_speed = null
-gravity = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=824797606]
 position = Vector2(-161, 1)
 scale = Vector2(2.58, 2.58)
 sprite_frames = SubResource("SpriteFrames_dcgde")
-animation = &"walk"
+animation = &"attack"
+frame = 9
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1939036282]
 position = Vector2(-170.5, 86.75)
@@ -379,7 +378,11 @@ debug_color = Color(0.41669622, 0.5729361, 0.5463501, 0.41960785)
 position = Vector2(-198, 0)
 rect = Rect2(-28, -10, 138, 186)
 
+[node name="StunTimer" type="Timer" parent="." unique_id=384505334]
+one_shot = true
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered"]
 [connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited"]
@@ -387,3 +390,4 @@ rect = Rect2(-28, -10, 138, 186)
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="area_entered" from="ChaseRange" to="." method="_on_chase_range_area_entered"]
 [connection signal="area_exited" from="ChaseRange" to="." method="_on_chase_range_area_exited"]
+[connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
