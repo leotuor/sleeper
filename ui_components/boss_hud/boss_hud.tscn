@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://boss_hud_scene"]
+[gd_scene format=3]
 
 [ext_resource type="Script" uid="uid://c10kdimtic3ot" path="res://ui_components/boss_hud/boss_hud.gd" id="1_bhud"]
 
