@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://c8xoj7hudy1h4"
-path="res://.godot/imported/Orange Kid.otf-a95a4a6e5cc26ee4ece57dbcadb80148.fontdata"
+path="res://.godot/imported/Orange Kid.otf-9e336167b5dbb18e38201519fd95edad.fontdata"
 
 [deps]
 
-source_file="res://menu/Orange Kid.otf"
-dest_files=["res://.godot/imported/Orange Kid.otf-a95a4a6e5cc26ee4ece57dbcadb80148.fontdata"]
+source_file="res://Menu/Orange Kid.otf"
+dest_files=["res://.godot/imported/Orange Kid.otf-9e336167b5dbb18e38201519fd95edad.fontdata"]
 
 [params]
 
