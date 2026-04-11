@@ -313,7 +313,11 @@ debug_color = Color(0.41669622, 0.5729361, 0.5463501, 0.41960785)
 position = Vector2(-197, 1)
 rect = Rect2(-50, -10, 151, 185)
 
+[node name="StunTimer" type="Timer" parent="." unique_id=1355833585]
+one_shot = true
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered"]
 [connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited"]
@@ -321,3 +325,4 @@ rect = Rect2(-50, -10, 151, 185)
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="area_entered" from="ChaseRange" to="." method="_on_chase_range_area_entered"]
 [connection signal="area_exited" from="ChaseRange" to="." method="_on_chase_range_area_exited"]
+[connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
