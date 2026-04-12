@@ -59,6 +59,12 @@ func go_to_menu() -> void:
 	_transitioning = false
 	get_tree().change_scene_to_file("res://Menu/menu.tscn")
 
+func go_to_dead_screen() -> void:
+	current_level_index = 0
+	current_hp = max_hp
+	_transitioning = false
+	get_tree().change_scene_to_file("res://gameover/game_over.tscn")
+
 func next_level() -> void:
 	if _transitioning:
 		return

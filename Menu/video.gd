@@ -7,7 +7,6 @@ extends VBoxContainer
 
 func _ready():
 	var resolutions = [
-		Vector2i(1920, 1080),
 		Vector2i(1280, 900),
 		Vector2i(640, 360)
 	]
