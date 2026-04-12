@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://766jsikflxl" path="res://player/player.tscn" id="4_player"]
 [ext_resource type="PackedScene" uid="uid://d022l25jcpys6" path="res://ui_components/health_bar/player_hud.tscn" id="5_hud"]
 [ext_resource type="PackedScene" uid="uid://be8mgku0wwtq" path="res://pausemenu.tscn" id="6_a44be"]
+[ext_resource type="PackedScene" path="res://enemies/Boss/characterBody.tscn" id="7_boss"]
+[ext_resource type="PackedScene" path="res://ui_components/boss_hud/boss_hud.tscn" id="8_bosshud"]
+[ext_resource type="Script" uid="uid://duo3ueqp7d2me" path="res://stage_scenes/directoriaStage/diretoria.gd" id="9_dirscript"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ceil"]
 size = Vector2(1800, 20)
@@ -16,7 +19,9 @@ size = Vector2(1800, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
 size = Vector2(13, 368)
 
+
 [node name="Diretoria" type="Node2D" unique_id=501937711]
+script = ExtResource("9_dirscript")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=502760785]
 
@@ -66,9 +71,15 @@ position = Vector2(1100, 172)
 [node name="Z4_4" parent="." unique_id=510298004 instance=ExtResource("3_z4")]
 position = Vector2(1400, 172)
 
+[node name="Boss" parent="." unique_id=520000001 instance=ExtResource("7_boss")]
+position = Vector2(1600, 172)
+
+
 [node name="CharacterBody2D" parent="." unique_id=511592616 instance=ExtResource("4_player")]
 position = Vector2(126, 169)
 
 [node name="playerHud" parent="." unique_id=512400513 instance=ExtResource("5_hud")]
+
+[node name="BossHud" parent="." unique_id=520000004 instance=ExtResource("8_bosshud")]
 
 [node name="Pausemenu" parent="." unique_id=266545456 instance=ExtResource("6_a44be")]
