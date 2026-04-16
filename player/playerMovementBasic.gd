@@ -7,6 +7,10 @@ const JUMP_VELOCITY = -400.0
 @onready var HitboxCollition = $Hitbox/HitboxCollisionShape2D
 @onready var camera: Camera2D = $Camera2D
 
+# Referências dos nós de som
+@onready var som_passos = $SomPassos
+@onready var hit_sound = $HitSound # <-- ADICIONADO AQUI a referência do som de soco
+
 # THIS IS THE MISSING LINK! We need to grab the BeamOrigin node.
 @onready var beam_origin = $AnimatedSprite2D/BeamOrigin
 
@@ -33,9 +37,11 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 		
 	if morreu:
+		som_passos.stop() # <-- Garante que o som pare ao morrer
 		return
 		
 	if tomando_dano:
+		som_passos.stop() # <-- Garante que o som pare ao tomar dano
 		velocity.x = 0
 		move_and_slide()
 		AS.play("hurt")
@@ -83,6 +89,7 @@ func attack():
 	is_attacking = true
 	HitboxCollition.disabled = false
 	AS.play("attack")
+	hit_sound.play() # <-- ADICIONADO AQUI para tocar o som junto com o ataque
 
 # 4. The new special ability function
 func special_ability():
@@ -92,15 +99,21 @@ func special_ability():
 func handle_animation():
 	# 5. Skip standard animations if EITHER lock is active
 	if is_attacking or is_using_special:
+		som_passos.stop() # <-- Para o som durante ataques
 		return 
 
 	if is_on_floor():
 		if velocity.x != 0:
 			AS.play("running")
+			# <-- Toca o som de passos se estiver correndo e ainda não estiver tocando
+			if not som_passos.playing:
+				som_passos.play()
 		else:
 			AS.play("idle")
+			som_passos.stop() # <-- Para o som se estiver parado
 	else:
 		AS.play("running")
+		som_passos.stop() # <-- Para o som se estiver no ar pulando/caindo
 
 # --- THIS IS THE BEAM FIRING LOGIC ---
 

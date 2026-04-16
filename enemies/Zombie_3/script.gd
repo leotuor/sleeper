@@ -14,6 +14,10 @@ var vida: int = 120
 @onready var screen_notifier = $VisibleOnScreenNotifier2D
 @onready var stun_timer = $StunTimer
 
+# --- ADICIONADO: Referências aos nós de áudio ---
+@onready var som_zumbi = $AudioStreamPlayer2D
+@onready var som_morte = $SomMorte # <-- ADICIONADO: Referência para o som de morte
+
 var em_stun: bool = false
 var direction := 1
 var jogador_na_area: bool = false
@@ -23,6 +27,14 @@ var tomando_dano: bool = false
 var is_dead: bool = false
 var perseguindo_jogador: bool = false
 var alvo: Node2D = null
+
+# --- ADICIONADO: Função _ready para configurar o loop do som ---
+func _ready() -> void:
+	var timer_som = Timer.new()
+	timer_som.wait_time = 4.0 # Intervalo de 4 segundos
+	timer_som.autostart = true
+	timer_som.timeout.connect(_on_timer_som_timeout)
+	add_child(timer_som)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -114,6 +126,11 @@ func tomar_dano(quantidade: int) -> void:
 		em_stun = false # Garante que o morto não rode lógica de stun
 		desativar_todas_colisoes(self)
 		anim.play("dead")
+		
+		# <-- ADICIONADO: Toca o som de morte
+		if som_morte != null:
+			som_morte.play()
+			
 		drop_food()
 	else:
 		anim.play("hurt")
@@ -163,3 +180,8 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 
 func _on_stun_timer_timeout() -> void:
 	em_stun = false
+
+# --- ADICIONADO: Função chamada ao fim do tempo do Timer ---
+func _on_timer_som_timeout() -> void:
+	if not is_dead and som_zumbi != null:
+		som_zumbi.play()

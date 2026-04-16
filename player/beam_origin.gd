@@ -8,6 +8,9 @@ extends Node2D
 @onready var body = $BodySprite
 @onready var hitbox_shape = $BeamHitbox/CollisionShape2D
 
+# --- ADICIONADO: Referência ao nó de som com o nome correto ---
+@onready var som_kamehameha = $"../../Kamehameha"
+
 var max_beam_distance : float = 1200.0
 var current_frame_index : float = 0.0
 
@@ -24,14 +27,22 @@ func _physics_process(delta):
 func fire_beam():
 	visible = true
 	$BeamHitbox.monitoring = true
-	hitbox_shape.disabled = false;
+	hitbox_shape.disabled = false
 	current_frame_index = 0.0 # Reset animation when fired
+	
+	# --- ADICIONADO: Toca o som do kamehameha quando o raio dispara ---
+	if som_kamehameha != null:
+		som_kamehameha.play()
 
 # Turns the beam off
 func stop_beam():
-	hitbox_shape.disabled = true;
+	hitbox_shape.disabled = true
 	visible = false
 	$BeamHitbox.monitoring = false
+	
+	# --- ADICIONADO: Para o som quando o raio é desligado ---
+	if som_kamehameha != null:
+		som_kamehameha.stop()
 
 func animate_beam(delta):
 	if beam_frames.is_empty(): return
