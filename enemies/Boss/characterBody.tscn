@@ -1,4 +1,4 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cbrj6kphex0ve"]
 
 [ext_resource type="Script" uid="uid://c6c8bohaodq2x" path="res://enemies/Boss/script.gd" id="1_boss"]
 [ext_resource type="Texture2D" uid="uid://bc7bfnneoh3nl" path="res://enemies/Boss/sprites/Attack.png" id="2_atk"]
@@ -204,67 +204,71 @@ radius = 130.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_chase"]
 radius = 400.0
 
-[node name="Boss" type="CharacterBody2D"]
+[node name="Boss" type="CharacterBody2D" unique_id=1048939546]
 script = ExtResource("1_boss")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 0)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=7062925]
+position = Vector2(0, 25)
 scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_boss")
 animation = &"walk"
 autoplay = "walk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=148633201]
 position = Vector2(0, 75)
 shape = SubResource("RectangleShape2D_body")
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=726148880]
+position = Vector2(0, 25)
 collision_layer = 8
 collision_mask = 4
 
-[node name="HurtboxCollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="HurtboxCollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=917147051]
 position = Vector2(0, 75)
 shape = SubResource("RectangleShape2D_hurtbox")
 debug_color = Color(2.5027991e-06, 0.64455205, 0.28477475, 0.41960785)
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=60153969]
+position = Vector2(0, 25)
 collision_layer = 16
 collision_mask = 0
 
-[node name="HitboxShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1535027996]
 position = Vector2(0, 75)
 shape = SubResource("RectangleShape2D_hitbox")
 disabled = true
 debug_color = Color(0.9762252, 0.11015553, 0.282299, 0.41960785)
 
-[node name="AttackRange" type="Area2D" parent="."]
+[node name="AttackRange" type="Area2D" parent="." unique_id=817169883]
+position = Vector2(0, 25)
 collision_layer = 0
 collision_mask = 2
 
-[node name="AtkRangeCollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+[node name="AtkRangeCollisionShape2D" type="CollisionShape2D" parent="AttackRange" unique_id=1620445930]
 position = Vector2(0, 75)
 shape = SubResource("CircleShape2D_attack")
 debug_color = Color(0.49717373, 0.582545, 0, 0.41960785)
 
-[node name="AttackDuration" type="Timer" parent="."]
+[node name="AttackDuration" type="Timer" parent="." unique_id=2031744799]
 wait_time = 0.7
 one_shot = true
 
-[node name="AttackCooldown" type="Timer" parent="."]
+[node name="AttackCooldown" type="Timer" parent="." unique_id=1456167821]
 wait_time = 1.5
 one_shot = true
 
-[node name="ChaseRange" type="Area2D" parent="."]
+[node name="ChaseRange" type="Area2D" parent="." unique_id=972491302]
+position = Vector2(0, 25)
 collision_layer = 0
 collision_mask = 2
 
-[node name="ChaseRangeCollisionShape2D" type="CollisionShape2D" parent="ChaseRange"]
+[node name="ChaseRangeCollisionShape2D" type="CollisionShape2D" parent="ChaseRange" unique_id=1542134818]
 position = Vector2(0, 75)
 shape = SubResource("CircleShape2D_chase")
 debug_color = Color(0.41669622, 0.5729361, 0.5463501, 0.41960785)
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(0, 0)
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=610765512]
+position = Vector2(2, 74)
 rect = Rect2(-126, -126, 252, 252)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
