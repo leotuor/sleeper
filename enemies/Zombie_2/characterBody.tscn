@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://be8do4v6ymabn" path="res://enemies/Zombie_2/sprites/Hurt.png" id="4_iqvia"]
 [ext_resource type="Texture2D" uid="uid://223k1msif2va" path="res://enemies/Zombie_2/sprites/Idle.png" id="5_3kkwi"]
 [ext_resource type="Texture2D" uid="uid://cppys432t3qby" path="res://enemies/Zombie_2/sprites/Walk.png" id="6_n31n7"]
+[ext_resource type="AudioStream" uid="uid://dvoc0vn2jmlu7" path="res://sounds/idol sound zombie-963.wav" id="7_tm8d1"]
+[ext_resource type="AudioStream" uid="uid://bvcttyiwgx41j" path="res://sounds/Zombie-Death-_Minecraft-Sound_-Sound-Effect-for-editing.wav" id="8_d08k7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2vh3q"]
 atlas = ExtResource("2_tm8d1")
@@ -267,7 +269,7 @@ script = ExtResource("1_msf1r")
 position = Vector2(-161, 3.9079967)
 scale = Vector2(2.581, 2.6264374)
 sprite_frames = SubResource("SpriteFrames_dcgde")
-animation = &"walk"
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1939036282]
 position = Vector2(-168, 83.5)
@@ -320,7 +322,17 @@ debug_color = Color(0.41669622, 0.5729361, 0.5463501, 0.41960785)
 position = Vector2(-195, 3)
 rect = Rect2(-16, -10, 139, 184)
 
+[node name="StunTimer" type="Timer" parent="." unique_id=48006260]
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1961306401]
+stream = ExtResource("7_tm8d1")
+
+[node name="SomMorte" type="AudioStreamPlayer2D" parent="." unique_id=626295673]
+stream = ExtResource("8_d08k7")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered"]
 [connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited"]
@@ -328,3 +340,4 @@ rect = Rect2(-16, -10, 139, 184)
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="area_entered" from="ChaseRange" to="." method="_on_chase_range_area_entered"]
 [connection signal="area_exited" from="ChaseRange" to="." method="_on_chase_range_area_exited"]
+[connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bhahoctgv4sin" path="res://enemies/Zombie_3/characterBody.tscn" id="3_z3"]
 [ext_resource type="PackedScene" uid="uid://766jsikflxl" path="res://player/player.tscn" id="4_player"]
 [ext_resource type="PackedScene" uid="uid://d022l25jcpys6" path="res://ui_components/health_bar/player_hud.tscn" id="5_hud"]
+[ext_resource type="PackedScene" uid="uid://be8mgku0wwtq" path="res://pausemenu.tscn" id="6_vu7cp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ceil"]
 size = Vector2(2762, 20)
@@ -63,6 +64,8 @@ position = Vector2(2200, 172)
 position = Vector2(2500, 172)
 
 [node name="CharacterBody2D" parent="." unique_id=311592616 instance=ExtResource("4_player")]
-position = Vector2(126, 169)
+position = Vector2(118, 172)
 
 [node name="playerHud" parent="." unique_id=312400513 instance=ExtResource("5_hud")]
+
+[node name="Pausemenu" parent="." unique_id=266545456 instance=ExtResource("6_vu7cp")]

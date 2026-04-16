@@ -1,0 +1,21 @@
+[gd_resource type="Theme" format=3 uid="uid://do8oyusrcacfn"]
+
+[ext_resource type="FontFile" uid="uid://c8xoj7hudy1h4" path="res://menu/Orange Kid.otf" id="1_amlv4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jgp83"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ik68m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hm7vb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_amlv4"]
+
+[resource]
+Button/colors/font_focus_color = Color(1, 1, 0, 1)
+Button/colors/font_hover_color = Color(1, 1, 0, 1)
+Button/colors/font_pressed_color = Color(1, 0.34901962, 0, 1)
+Button/fonts/font = ExtResource("1_amlv4")
+Button/styles/focus = SubResource("StyleBoxEmpty_jgp83")
+Button/styles/hover = SubResource("StyleBoxEmpty_ik68m")
+Button/styles/normal = SubResource("StyleBoxEmpty_hm7vb")
+Button/styles/pressed = SubResource("StyleBoxEmpty_amlv4")

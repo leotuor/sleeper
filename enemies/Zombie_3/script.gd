@@ -5,13 +5,20 @@ var vida: int = 120
 @export var speed: float = 40.0
 @export var chase_speed: float = 60.0
 @export var gravity: float = 900.0
+@export var attack_strike_frame: int = 3
 
 @onready var anim = $AnimatedSprite2D
 @onready var hitbox_shape = $Hitbox/HitboxShape2D
 @onready var cooldown_timer = $AttackCooldown
 @onready var duration_timer = $AttackDuration
 @onready var screen_notifier = $VisibleOnScreenNotifier2D
+@onready var stun_timer = $StunTimer
 
+# --- ADICIONADO: Referências aos nós de áudio ---
+@onready var som_zumbi = $AudioStreamPlayer2D
+@onready var som_morte = $SomMorte # <-- ADICIONADO: Referência para o som de morte
+
+var em_stun: bool = false
 var direction := 1
 var jogador_na_area: bool = false
 var pode_atacar: bool = true
@@ -21,6 +28,14 @@ var is_dead: bool = false
 var perseguindo_jogador: bool = false
 var alvo: Node2D = null
 
+# --- ADICIONADO: Função _ready para configurar o loop do som ---
+func _ready() -> void:
+	var timer_som = Timer.new()
+	timer_som.wait_time = 4.0 # Intervalo de 4 segundos
+	timer_som.autostart = true
+	timer_som.timeout.connect(_on_timer_som_timeout)
+	add_child(timer_som)
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -29,9 +44,12 @@ func _physics_process(delta: float) -> void:
 		return
 
 	# 3. Estado de Dano (Stun: fica parado sem agir)
-	if tomando_dano:
+	if tomando_dano or em_stun:
 		velocity.x = 0
 		move_and_slide()
+		
+		if not tomando_dano and anim.animation != "idle" and not is_dead:
+			anim.play("idle")
 		return
 
 	# 4. Gatilho de Ataque
@@ -93,6 +111,8 @@ func tomar_dano(quantidade: int) -> void:
 		
 	vida -= quantidade
 	tomando_dano = true
+	em_stun = true
+	stun_timer.start(0.6)
 	
 	# Cancela o ataque ativo se tomar dano (Efeito Stun)
 	if atacando:
@@ -103,16 +123,17 @@ func tomar_dano(quantidade: int) -> void:
 		
 	if vida <= 0:
 		is_dead = true
+		em_stun = false # Garante que o morto não rode lógica de stun
 		desativar_todas_colisoes(self)
 		anim.play("dead")
+		
+		# <-- ADICIONADO: Toca o som de morte
+		if som_morte != null:
+			som_morte.play()
+			
 		drop_food()
 	else:
 		anim.play("hurt")
-
-func _on_attack_duration_timeout() -> void:
-	hitbox_shape.set_deferred("disabled", true)
-	atacando = false
-	cooldown_timer.start()
 
 func _on_attack_cooldown_timeout() -> void:
 	pode_atacar = true
@@ -140,6 +161,10 @@ func _on_chase_range_area_exited(area: Area2D) -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim.animation == "hurt":
 		tomando_dano = false
+	elif anim.animation == "attack":
+		hitbox_shape.set_deferred("disabled", true)
+		atacando = false
+		cooldown_timer.start()
 
 func drop_food() -> void:
 	var count = randi() % 4
@@ -148,3 +173,15 @@ func drop_food() -> void:
 		var steak = steak_scene.instantiate()
 		steak.position = position + Vector2(randf_range(-30, 30), 155)
 		get_parent().call_deferred("add_child", steak)
+		
+func _on_animated_sprite_2d_frame_changed() -> void:
+	if anim.animation == "attack" and anim.frame == attack_strike_frame:
+		hitbox_shape.set_deferred("disabled", false)
+
+func _on_stun_timer_timeout() -> void:
+	em_stun = false
+
+# --- ADICIONADO: Função chamada ao fim do tempo do Timer ---
+func _on_timer_som_timeout() -> void:
+	if not is_dead and som_zumbi != null:
+		som_zumbi.play()
