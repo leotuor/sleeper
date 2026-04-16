@@ -9,7 +9,17 @@ const JUMP_VELOCITY = -400.0
 
 # Referências dos nós de som
 @onready var som_passos = $SomPassos
-@onready var hit_sound = $HitSound # <-- ADICIONADO AQUI a referência do som de soco
+@onready var hit_sound = $HitSound 
+
+# --- ADICIONADO: Variáveis da Energia e referência ao HUD ---
+# ATENÇÃO: Ajuste este caminho dependendo de onde o HUD está na sua árvore!
+@onready var hud = $"../playerHud"
+
+@export var max_energy: float = 100.0
+@export var special_cost: float = 100.0 # Custa 40 para atirar
+@export var energy_regen_rate: float = 15.0 # Regenera 15 por segundo
+var current_energy: float = 100.0
+# -------------------------------------------------------------
 
 # THIS IS THE MISSING LINK! We need to grab the BeamOrigin node.
 @onready var beam_origin = $AnimatedSprite2D/BeamOrigin
@@ -33,15 +43,26 @@ func _ready() -> void:
 	camera.position_smoothing_enabled = false
 
 func _physics_process(delta: float) -> void:
+	
+	# --- ADICIONADO: Lógica de recarga de energia e atualização da UI ---
+	if not is_using_special and current_energy < max_energy:
+		current_energy += energy_regen_rate * delta
+		current_energy = clamp(current_energy, 0, max_energy)
+	
+	# Envia os números de energia para o script do HUD atualizar a barra
+	if hud and hud.has_method("update_energy_ui"):
+		hud.update_energy_ui(current_energy, max_energy)
+	# --------------------------------------------------------------------
+
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		
 	if morreu:
-		som_passos.stop() # <-- Garante que o som pare ao morrer
+		som_passos.stop() 
 		return
 		
 	if tomando_dano:
-		som_passos.stop() # <-- Garante que o som pare ao tomar dano
+		som_passos.stop() 
 		velocity.x = 0
 		move_and_slide()
 		AS.play("hurt")
@@ -56,7 +77,9 @@ func _physics_process(delta: float) -> void:
 
 	# 2. Trigger the special ability 
 	if Input.is_action_just_pressed("special_action") and is_on_floor() and not is_attacking:
-		special_ability()
+		# --- ADICIONADO: Verifica se o jogador tem energia suficiente antes de atirar! ---
+		if current_energy >= special_cost:
+			special_ability()
 
 	var direction := Input.get_axis("move_left", "move_right")
 	
@@ -89,31 +112,33 @@ func attack():
 	is_attacking = true
 	HitboxCollition.disabled = false
 	AS.play("attack")
-	hit_sound.play() # <-- ADICIONADO AQUI para tocar o som junto com o ataque
+	hit_sound.play() 
 
 # 4. The new special ability function
 func special_ability():
 	is_using_special = true
+	
+	current_energy = 0.0 
+	
 	AS.play("special_ability")
 
 func handle_animation():
 	# 5. Skip standard animations if EITHER lock is active
 	if is_attacking or is_using_special:
-		som_passos.stop() # <-- Para o som durante ataques
+		som_passos.stop() 
 		return 
 
 	if is_on_floor():
 		if velocity.x != 0:
 			AS.play("running")
-			# <-- Toca o som de passos se estiver correndo e ainda não estiver tocando
 			if not som_passos.playing:
 				som_passos.play()
 		else:
 			AS.play("idle")
-			som_passos.stop() # <-- Para o som se estiver parado
+			som_passos.stop() 
 	else:
 		AS.play("running")
-		som_passos.stop() # <-- Para o som se estiver no ar pulando/caindo
+		som_passos.stop() 
 
 # --- THIS IS THE BEAM FIRING LOGIC ---
 
@@ -152,7 +177,6 @@ func tomar_dano(quantidade: int) -> void:
 
 	GameManager.update_hp(-quantidade)
 	tomando_dano = true
-	print(GameManager.current_hp)
 	if GameManager.current_hp <= 0 and not morreu:
 		morreu = true
 		AS.play('dead')

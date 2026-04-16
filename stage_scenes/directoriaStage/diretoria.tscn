@@ -55,7 +55,7 @@ position = Vector2(1000, 172)
 position = Vector2(1500, 172)
 
 [node name="Boss" parent="." unique_id=520000001 instance=ExtResource("7_boss")]
-position = Vector2(814.0002, 64)
+position = Vector2(1621, 70)
 scale = Vector2(1.375, 1.375)
 
 [node name="CharacterBody2D" parent="." unique_id=511592616 instance=ExtResource("4_player")]
