@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d0npqy0i2xshm"
+path="res://.godot/imported/idol sound zombie 2-grunting-297.wav-1960e6aca443df7013d50c6a2c24a2f9.sample"
+
+[deps]
+
+source_file="res://sounds/idol sound zombie 2-grunting-297.wav"
+dest_files=["res://.godot/imported/idol sound zombie 2-grunting-297.wav-1960e6aca443df7013d50c6a2c24a2f9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

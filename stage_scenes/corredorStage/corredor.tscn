@@ -64,7 +64,7 @@ position = Vector2(2200, 172)
 position = Vector2(2500, 172)
 
 [node name="CharacterBody2D" parent="." unique_id=311592616 instance=ExtResource("4_player")]
-position = Vector2(126, 169)
+position = Vector2(118, 172)
 
 [node name="playerHud" parent="." unique_id=312400513 instance=ExtResource("5_hud")]
 

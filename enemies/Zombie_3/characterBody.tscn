@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://do1ap37bdsqio" path="res://enemies/Zombie_3/sprites/Hurt.png" id="4_eoiap"]
 [ext_resource type="Texture2D" uid="uid://bj1uem5fv05n2" path="res://enemies/Zombie_3/sprites/Idle.png" id="5_13evv"]
 [ext_resource type="Texture2D" uid="uid://cuovv6mf3khaf" path="res://enemies/Zombie_3/sprites/Walk.png" id="6_6mx7p"]
+[ext_resource type="AudioStream" uid="uid://d0npqy0i2xshm" path="res://sounds/idol sound zombie 2-grunting-297.wav" id="7_exvcr"]
+[ext_resource type="AudioStream" uid="uid://bvcttyiwgx41j" path="res://sounds/Zombie-Death-_Minecraft-Sound_-Sound-Effect-for-editing.wav" id="8_87xm6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jdedd"]
 atlas = ExtResource("2_exvcr")
@@ -315,6 +317,12 @@ rect = Rect2(-50, -10, 151, 185)
 
 [node name="StunTimer" type="Timer" parent="." unique_id=1355833585]
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1637625903]
+stream = ExtResource("7_exvcr")
+
+[node name="SomMorte" type="AudioStreamPlayer2D" parent="." unique_id=1248565672]
+stream = ExtResource("8_87xm6")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

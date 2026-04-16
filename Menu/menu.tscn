@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c8ovtxbkf2l7v"]
 
-[ext_resource type="Script" uid="uid://oahyngxfvdoy" path="res://Menu/menu.gd" id="1_raj00"]
-[ext_resource type="Texture2D" uid="uid://ddgmlw70yte4n" path="res://Menu/Menu.png" id="2_8w4re"]
-[ext_resource type="FontFile" uid="uid://c8xoj7hudy1h4" path="res://Menu/Orange Kid.otf" id="3_ofseh"]
-[ext_resource type="Script" uid="uid://b00vbdaamfj2m" path="res://Menu/video.gd" id="4_8w4re"]
-[ext_resource type="Script" uid="uid://qk7nj2aocxxr" path="res://Menu/audio.gd" id="5_ofseh"]
-[ext_resource type="Script" uid="uid://dvtjbn2h6ljdy" path="res://Menu/controls.gd" id="6_w6voe"]
+[ext_resource type="Script" uid="uid://oahyngxfvdoy" path="res://menu/menu.gd" id="1_raj00"]
+[ext_resource type="Texture2D" uid="uid://ddgmlw70yte4n" path="res://menu/Menu.png" id="2_8w4re"]
+[ext_resource type="FontFile" uid="uid://c8xoj7hudy1h4" path="res://menu/Orange Kid.otf" id="3_ofseh"]
+[ext_resource type="Script" uid="uid://b00vbdaamfj2m" path="res://menu/video.gd" id="4_8w4re"]
+[ext_resource type="Script" path="res://Menu/audio.gd" id="5_ofseh"]
+[ext_resource type="Script" path="res://Menu/controls.gd" id="6_w6voe"]
 
 [node name="MainMenu" type="Control" unique_id=1187686995 node_paths=PackedStringArray("menu", "main_settings", "video_settings", "audio_settings", "controls_settings", "play_button", "settings_button", "exit_button", "back_button", "video_button", "audio_button", "controls_button")]
 layout_mode = 3
@@ -33,11 +33,11 @@ controls_button = NodePath("Settings/Control3/Controls")
 [node name="TextureRect" type="TextureRect" parent="." unique_id=730796518]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.003
-anchor_bottom = 0.994
-offset_left = 8.0
-offset_right = 6.079956
-offset_bottom = 2.1600037
+anchor_left = 0.012
+anchor_right = 1.0120001
+anchor_bottom = 1.0
+offset_left = 0.3199997
+offset_right = 0.3199463
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_8w4re")

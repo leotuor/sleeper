@@ -39,3 +39,10 @@ horizontal_alignment = 1
 position = Vector2(105.99999, 20)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("2_6vp4k")
+
+[node name="BeamMeter" type="ProgressBar" parent="." unique_id=502426368]
+offset_left = 10.0
+offset_top = 324.0
+offset_right = 158.0
+offset_bottom = 351.0
+value = 100.0
